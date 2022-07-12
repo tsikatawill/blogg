@@ -15,6 +15,9 @@
   "plugins": ["react"],
   "rules": {
     "sort-imports": "warn",
-    "no-undef": "warn"
+    "no-undef": "warn",
+    "react/jsx-uses-react": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/prop-types": 0
   }
 }

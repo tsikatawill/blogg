@@ -1,6 +1,6 @@
 import { AiOutlineRocket } from 'react-icons/ai'
 
-export default function Logo({ size }) {
+export default function Logo() {
   return (
     <span className="flex gap-2 items-center">
       <AiOutlineRocket

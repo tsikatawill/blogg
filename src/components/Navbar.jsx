@@ -4,7 +4,7 @@ import ThemeToggler from './ThemeToggler'
 
 export default function Navbar() {
   return (
-    <nav className="navbar dark:bg-slate-900 dark:text-white h-16 bg-white fixed w-full">
+    <nav className="navbar dark:bg-slate-900 dark:text-white h-16 bg-white fixed w-full z-40">
       <div className="container h-full flex items-center justify-between">
         <Link to="/">
           <Logo size={30} />
@@ -17,7 +17,10 @@ export default function Navbar() {
             >
               Get started
             </Link>
-            <Link to="/login" className="hidden sm:inline-flex">
+            <Link
+              to="/login"
+              className="hidden sm:inline-flex hover:text-purple-600 dark:hover:text-slate-400"
+            >
               Login
             </Link>
           </div>

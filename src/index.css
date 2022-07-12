@@ -6,5 +6,9 @@
 
 body {
   font-family: 'Raleway', -apple-system, 'Open Sans', system-ui, sans-serif;
-  @apply dark:bg-slate-800;
+  @apply dark:bg-slate-800 bg-slate-100 dark:text-white;
+}
+
+.container {
+  @apply max-w-screen-lg mx-auto px-2 md:px-5;
 }

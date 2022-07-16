@@ -1,5 +1,5 @@
 .sectionHeader {
-  @apply font-bold text-2xl pb-2 border-b-2 w-fit border-black mb-10;
+  @apply font-bold text-2xl pb-2 underline underline-offset-[1rem] w-fit mb-10;
 }
 
 form .inputGroup {
@@ -23,4 +23,8 @@ form .errorMsg {
     url(https://uploads.linear.app/5b440f6e-6aed-4159-b0ed-f69d7442da54/5c69faab-ebd4-4ed0-9660-db6a80f5e3b7/66304491-cc7b-4eeb-bcee-2333a1b69ae8)
       center center/cover no-repeat;
   background-attachment: fixed;
+}
+
+.postsSection {
+  @apply py-10;
 }

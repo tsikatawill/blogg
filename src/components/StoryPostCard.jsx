@@ -8,7 +8,7 @@ export default function StoryPostCard() {
           className="h-full object-cover w-full"
         />
       </div>
-      <div className="content p-7 flex flex-col  justify-between">
+      <div className="content p-4 lg:p-7 flex flex-col  justify-between">
         <div>
           <h3 className="font-bold mb-2 line-clamp-2">
             Some title Lorem ipsum dolor sit, amet consectetur adipisicing elit.

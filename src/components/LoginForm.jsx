@@ -9,14 +9,12 @@ import { FaGoogle } from 'react-icons/fa'
 import { app } from '../firebase.config'
 import styles from '../styles/shared.module.css'
 import { toast } from 'react-toastify'
-import useDarkSIde from '../hooks/useDarkSIde'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 export default function LoginForm() {
   const navigate = useNavigate()
   const auth = getAuth(app)
-  const theme = localStorage.getItem('theme')
 
   const {
     register,
@@ -32,7 +30,6 @@ export default function LoginForm() {
         // ...
         toast('Login successful', {
           type: 'success',
-          theme,
         })
 
         navigate('/')
@@ -44,19 +41,16 @@ export default function LoginForm() {
           case 'auth/user-not-found':
             toast("There's no account with that email", {
               type: 'error',
-              theme,
             })
             break
           case 'auth/wrong-password':
             toast('You have entered a wrong password', {
               type: 'error',
-              theme,
             })
           case 'auth/too-many-requests':
             toast('Too many login consecutive login attempts', {
               type: 'error',
               autoClose: 2000,
-              theme,
             })
             break
 
@@ -78,7 +72,6 @@ export default function LoginForm() {
         const user = result.user
         toast('Login successful', {
           type: 'success',
-          theme,
         })
         navigate('/')
       })

@@ -1,14 +1,15 @@
+import FeaturedPostCard from './components/FeaturedPostCard'
 import Header from './components/Header'
-import PostCard from './components/PostCard'
 
 function App() {
   return (
     <>
       <Header />
       <div className="container py-5">
-        <PostCard type="featured" />
-        <div className="h-10"></div>
-        <PostCard type="story" />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          <FeaturedPostCard />
+          <FeaturedPostCard />
+        </div>
 
         <p>
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam at

@@ -7,14 +7,17 @@ import {
 import { HiOutlineLockClosed, HiOutlineMail } from 'react-icons/hi'
 import { FaGoogle } from 'react-icons/fa'
 import { app } from '../firebase.config'
+import { logUserIn } from '../features/UserSlice'
 import styles from '../styles/shared.module.css'
 import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
 export default function LoginForm() {
   const navigate = useNavigate()
   const auth = getAuth(app)
+  const dispatch = useDispatch()
 
   const {
     register,
@@ -28,6 +31,15 @@ export default function LoginForm() {
         // Signed in
         const user = userCredential.user
         // ...
+        dispatch(
+          logUserIn({
+            id: user.uid,
+            username: user.displayName,
+            email: user.email,
+            displayImage: user.photoURL,
+            isVerified: user.emailVerified,
+          })
+        )
         toast('Login successful', {
           type: 'success',
         })
@@ -70,6 +82,15 @@ export default function LoginForm() {
         const token = credential.accessToken
         // The signed-in user info.
         const user = result.user
+        dispatch(
+          logUserIn({
+            id: user.uid,
+            username: user.displayName,
+            email: user.email,
+            displayImage: user.photoURL,
+            isVerified: user.emailVerified,
+          })
+        )
         toast('Login successful', {
           type: 'success',
         })

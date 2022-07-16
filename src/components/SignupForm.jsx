@@ -8,8 +8,10 @@ import { HiOutlineLockClosed, HiOutlineMail } from 'react-icons/hi'
 import { FaGoogle } from 'react-icons/fa'
 import { addUser } from '../hooks/useAllUsers'
 import { app } from '../firebase.config'
+import { logUserIn } from '../features/UserSlice'
 import styles from '../styles/shared.module.css'
 import { toast } from 'react-toastify'
+import { useDispatch } from 'react-redux'
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 
@@ -17,6 +19,7 @@ export default function SignupForm() {
   const navigate = useNavigate()
   const auth = getAuth(app)
   const theme = localStorage.getItem('theme')
+  const dispatch = useDispatch()
 
   const {
     register,
@@ -29,6 +32,7 @@ export default function SignupForm() {
       .then((userCredential) => {
         // Signed in
         const user = userCredential.user
+
         addUser({
           id: user.uid,
           username: user.displayName,
@@ -41,7 +45,7 @@ export default function SignupForm() {
           type: 'success',
         })
 
-        // navigate('/login')
+        navigate('/login')
       })
       .catch((error) => {
         const errorCode = error.code
@@ -96,6 +100,16 @@ export default function SignupForm() {
           displayImage: user.photoURL,
           isVerified: user.emailVerified,
         })
+
+        dispatch(
+          logUserIn({
+            id: user.uid,
+            username: user.displayName,
+            email: user.email,
+            displayImage: user.photoURL,
+            isVerified: user.emailVerified,
+          })
+        )
         toast('Account successfully created', {
           type: 'success',
           theme,

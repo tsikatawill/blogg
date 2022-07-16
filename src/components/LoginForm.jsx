@@ -1,11 +1,23 @@
-import { GoogleAuthProvider, getAuth, signInWithPopup } from 'firebase/auth'
+import {
+  GoogleAuthProvider,
+  getAuth,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+} from 'firebase/auth'
 import { HiOutlineLockClosed, HiOutlineMail } from 'react-icons/hi'
 import { FaGoogle } from 'react-icons/fa'
 import { app } from '../firebase.config'
 import styles from '../styles/shared.module.css'
+import { toast } from 'react-toastify'
+import useDarkSIde from '../hooks/useDarkSIde'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 
 export default function LoginForm() {
+  const navigate = useNavigate()
+  const auth = getAuth(app)
+  const theme = localStorage.getItem('theme')
+
   const {
     register,
     formState: { errors },
@@ -13,12 +25,49 @@ export default function LoginForm() {
   } = useForm()
 
   const onSubmit = (data) => {
-    console.log(data)
-    console.log(errors.email)
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user
+        // ...
+        toast('Login successful', {
+          type: 'success',
+          theme,
+        })
+
+        navigate('/')
+      })
+      .catch((error) => {
+        const errorCode = error.code
+        const errorMessage = error.message
+        switch (errorCode) {
+          case 'auth/user-not-found':
+            toast("There's no account with that email", {
+              type: 'error',
+              theme,
+            })
+            break
+          case 'auth/wrong-password':
+            toast('You have entered a wrong password', {
+              type: 'error',
+              theme,
+            })
+          case 'auth/too-many-requests':
+            toast('Too many login consecutive login attempts', {
+              type: 'error',
+              autoClose: 2000,
+              theme,
+            })
+            break
+
+          default:
+            break
+        }
+        console.log(errorCode)
+      })
   }
 
   const handleGoogleLogin = async () => {
-    const auth = getAuth(app)
     const provider = new GoogleAuthProvider()
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -27,6 +76,11 @@ export default function LoginForm() {
         const token = credential.accessToken
         // The signed-in user info.
         const user = result.user
+        toast('Login successful', {
+          type: 'success',
+          theme,
+        })
+        navigate('/')
       })
       .catch((error) => {
         // Handle Errors here.
@@ -75,6 +129,7 @@ export default function LoginForm() {
         </label>
 
         <input
+          {...register('password')}
           type="password"
           id="password"
           placeholder="Enter your password"

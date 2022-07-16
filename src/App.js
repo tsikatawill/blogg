@@ -13,9 +13,6 @@ function App() {
           <StoryPostCard />
           <StoryPostCard />
           <StoryPostCard />
-          <StoryPostCard />
-          <StoryPostCard />
-          <StoryPostCard />
         </div>
       </div>
     </>

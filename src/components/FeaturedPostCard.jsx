@@ -1,3 +1,4 @@
+import { HiOutlineBookmark } from 'react-icons/hi'
 export default function FeaturedPostCard() {
   return (
     <div className="rounded-md h-[30rem] lg:h-72 lg:flex bg-white dark:bg-slate-500 border-2 dark:border-slate-500">
@@ -29,16 +30,19 @@ export default function FeaturedPostCard() {
             voluptate alias.
           </p>
         </div>
-        <div className="mt-5">
+        <div className="mt-5 flex items-center justify-between">
           <div className="user-details flex items-center gap-2 text-sm">
             <div className="avatar rounded-full overflow-hidden h-16 w-16 bg-black">
               {/* <img src={Img} alt="img" className="h-full object-cover" /> */}
             </div>
             <div className="div">
               <p className="name font-semibold">John Doe</p>
-              <p>saasd</p>
+              <p className="text-xs">Jun 3rd . 5 min read</p>
             </div>
           </div>
+          <span className="bookmark-icon">
+            <HiOutlineBookmark />
+          </span>
         </div>
       </div>
     </div>

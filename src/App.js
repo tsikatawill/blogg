@@ -1,5 +1,6 @@
 import FeaturedPostCard from './components/FeaturedPostCard'
 import Header from './components/Header'
+import StoryPostCard from './components/StoryPostCard'
 
 function App() {
   return (
@@ -9,6 +10,10 @@ function App() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           <FeaturedPostCard />
           <FeaturedPostCard />
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+          <StoryPostCard />
+          <StoryPostCard />
         </div>
 
         <p>

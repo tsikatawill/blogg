@@ -1,5 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
 import { useEffect, useState } from 'react'
+import { HiLogin } from 'react-icons/hi'
 import LoginForm from '../components/LoginForm'
 import Logo from '../components/Logo'
 import Navbar from '../components/Navbar'
@@ -24,20 +25,17 @@ export default function Login() {
   return (
     <>
       <Navbar>
-        <div className="nav-links flex items-center gap-3">
-          <Link to="#">Login</Link>
-          <Link to="/sign-up" className="px-4 py-1 bg-slate-300 text-black">
-            Get started
-          </Link>
-        </div>
+        <Link
+          to="/"
+          className="p-2 bg-slate-300 dark:bg-slate-700 flex items-center text-white gap-2 text-sm"
+        >
+          <HiLogin />
+        </Link>
       </Navbar>
-      <main className="grid place-content-center min-h-screen">
-        <div className="fixed bottom-10 right-10">
-          <ThemeToggler />
-        </div>
 
+      <main className="grid place-content-center before:block before:h-16 min-h-screen">
         <div className="container">
-          <div className="bg-white dark:bg-slate-900 w-[20rem] border border-gray-500 dark:border-gray-700 shadow-md shadow-slate-400 dark:shadow-stone-900 rounded-md py-10">
+          <div className="bg-white dark:bg-slate-900 w-[20rem] border border-gray-500 dark:border-gray-700 shadow-md shadow-slate-400 dark:shadow-stone-900 rounded-md py-10 my-2 md:my-0">
             <div className="header flex justify-center">
               <Logo />
             </div>

@@ -2,7 +2,7 @@ import { HiOutlineBookmark } from 'react-icons/hi'
 
 export default function FeaturedPostCard({ title, body, displayImage }) {
   return (
-    <div className="rounded-md h-[30rem] lg:h-72 lg:flex bg-white dark:bg-slate-500 border-2 dark:border-slate-500">
+    <div className="rounded-md h-[30rem] lg:h-72 lg:flex bg-white dark:bg-slate-900 border-2 dark:border-slate-500">
       <div className="h-1/2 lg:h-full lg:w-1/3 overflow-hidden">
         <img
           src={

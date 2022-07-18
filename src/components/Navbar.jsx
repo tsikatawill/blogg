@@ -32,53 +32,55 @@ export default function Navbar({ children }) {
           <Logo size={30} />
         </Link>
 
-        {children ? (
-          children
-        ) : (
-          <div className="flex gap-2 md:gap-5 items-center">
-            {user.isLoggedIn ? (
-              <>
-                <div className="user-details flex items-center gap-2 text-sm">
-                  <div className="avatar rounded-full overflow-hidden h-8 w-8 sm:h-10 sm:w-10 bg-slate-700">
-                    <img
-                      src={
-                        user.displayImage ||
-                        'https://uploads.linear.app/5b440f6e-6aed-4159-b0ed-f69d7442da54/e6649386-7875-4673-babd-a428dffc7f19/b2eb0415-ea35-460a-b871-f9eede1ebee8'
-                      }
-                      alt="img"
-                      className="h-full object-cover"
-                    />
+        <div className="flex items-center gap-5">
+          {children ? (
+            children
+          ) : (
+            <div className="flex gap-2 md:gap-5 items-center">
+              {user.isLoggedIn ? (
+                <>
+                  <div className="user-details flex items-center gap-2 text-sm">
+                    <div className="avatar rounded-full overflow-hidden h-8 w-8 sm:h-10 sm:w-10 bg-slate-700">
+                      <img
+                        src={
+                          user.displayImage ||
+                          'https://uploads.linear.app/5b440f6e-6aed-4159-b0ed-f69d7442da54/e6649386-7875-4673-babd-a428dffc7f19/b2eb0415-ea35-460a-b871-f9eede1ebee8'
+                        }
+                        alt="img"
+                        className="h-full object-cover"
+                      />
+                    </div>
+                    <p className="name font-semibold line-clamp-1 text-xs">
+                      {user.username.split(' ')[0]}
+                    </p>
                   </div>
-                  <p className="name font-semibold line-clamp-1 text-xs">
-                    {user.username.split(' ')[0]}
-                  </p>
+                  <button
+                    className="p-2 bg-slate-300 dark:bg-slate-700 text-white gap-2 text-sm"
+                    onClick={handleLogout}
+                  >
+                    <HiLogout className="text-sm" />
+                  </button>
+                </>
+              ) : (
+                <div className="nav-links flex gap-1 md:gap-3 items-center">
+                  <Link
+                    to="/sign-up"
+                    className="btn dark:bg-gray-500 dark:hover:bg-gray-600 bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 duration-200"
+                  >
+                    Get started
+                  </Link>
+                  <Link
+                    to="/login"
+                    className="hover:text-purple-600 dark:hover:text-slate-400"
+                  >
+                    Login
+                  </Link>
                 </div>
-                <button
-                  className="p-2 bg-slate-300 dark:bg-slate-700 text-white gap-2 text-sm"
-                  onClick={handleLogout}
-                >
-                  <HiLogout className="text-sm" />
-                </button>
-              </>
-            ) : (
-              <div className="nav-links flex gap-1 md:gap-3 items-center">
-                <Link
-                  to="/sign-up"
-                  className="btn dark:bg-gray-500 dark:hover:bg-gray-600 bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 duration-200"
-                >
-                  Get started
-                </Link>
-                <Link
-                  to="/login"
-                  className="hover:text-purple-600 dark:hover:text-slate-400"
-                >
-                  Login
-                </Link>
-              </div>
-            )}
-            <ThemeToggler />
-          </div>
-        )}
+              )}
+            </div>
+          )}
+          <ThemeToggler />
+        </div>
       </div>
     </nav>
   )

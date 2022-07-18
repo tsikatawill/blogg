@@ -62,7 +62,7 @@ export default function Navbar({ children }) {
                   </button>
                 </>
               ) : (
-                <div className="nav-links flex gap-1 md:gap-3 items-center">
+                <div className="nav-links flex gap-5 items-center">
                   <Link
                     to="/sign-up"
                     className="btn dark:bg-gray-500 dark:hover:bg-gray-600 bg-purple-600 hover:bg-purple-700 text-white py-1 px-3 duration-200"

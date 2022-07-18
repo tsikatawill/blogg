@@ -17,7 +17,7 @@ export default function useAllUsers() {
     }
 
     getUsers()
-  }, [])
+  }, [users])
   return [users]
 }
 

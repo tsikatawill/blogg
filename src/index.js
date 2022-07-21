@@ -3,6 +3,7 @@ import 'react-toastify/dist/ReactToastify.css'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import store, { persistor } from './store/store'
 import App from './App'
+import CreatePost from './pages/CreatePost'
 import Login from './pages/Login'
 import MainLayout from './layouts/MainLayout'
 import { PersistGate } from 'redux-persist/integration/react'
@@ -32,7 +33,11 @@ root.render(
               <Route element={<ProtectedRoute />}>
                 <Route
                   path="/create-post"
-                  element={<MainLayout></MainLayout>}
+                  element={
+                    <MainLayout>
+                      <CreatePost />
+                    </MainLayout>
+                  }
                 />
               </Route>
               <Route path="/login" element={<Login />} />
